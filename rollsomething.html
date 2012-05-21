@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>JS+CSS随屏幕滚动的带缓冲效果的右下角DIV浮动层丨芯晴网页特效丨CsrCode.Cn</title>
+<style>
+ html,body{
+  height:1000px;
+ }
+</style>
+<SCRIPT language=JavaScript type=text/javascript>
+lastScrollY=-230;
+function heartBeat(){ 
+var diffY;
+if (document.documentElement && document.documentElement.scrollTop)
+	diffY = document.documentElement.scrollTop;
+else if (document.body)
+	diffY = document.body.scrollTop
+else
+    {/*Netscape stuff*/}
+	
+//alert(diffY);
+percent=.1*(diffY-lastScrollY); 
+if(percent>0)percent=Math.ceil(percent); 
+else percent=Math.floor(percent); 
+document.getElementById("lovexin12").style.top=parseInt(document.getElementById("lovexin12").style.top)+percent+"px";
+document.getElementById("lovexin14").style.top=parseInt(document.getElementById("lovexin12").style.top)+percent+"px";
+lastScrollY=lastScrollY+percent; 
+//alert(lastScrollY);
+}
+function closeleftBanner()
+{
+document.getElementById("lovexin12").style.display='none'
+
+}
+function closerightBanner()
+{
+document.getElementById("lovexin14").style.display='none'
+
+}
+
+//suspendcode12="<DIV id=\"lovexin12\" style='width:94px;height:94px;left:2px;POSITION:absolute;TOP:50px;'></div>"
+//suspendcode14="<DIV id=\"lovexin14\" style='width:118px;height:148px;right:-10px;POSITION:absolute;TOP:350px;'><a target=blank href=tencent://message/?uin=820065521&Site=www.tuofengoa.com/&Menu=yes><img src=http://www.baidu.com/img/qrjlogo_b986a2811fc39688ddff61b81231f276.gif width=95 border=0 height=95 /><img src=http://www.baidu.com/img/qrjlogo_b986a2811fc39688ddff61b81231f276.gif width=95 border=0 height=95 /></a></div>"
+//document.write(suspendcode12); 
+//document.write(suspendcode14); 
+window.setInterval("heartBeat()",1);
+</SCRIPT>
+</head>
+<body>
+<DIV id=\"lovexin14\" style='width:118px;height:148px;right:-10px;POSITION:absolute;TOP:350px;'><a target=blank href=tencent://message/?uin=820065521&Site=www.tuofengoa.com/&Menu=yes><img src=http://www.baidu.com/img/qrjlogo_b986a2811fc39688ddff61b81231f276.gif width=95 border=0 height=95 /><img src=http://www.baidu.com/img/qrjlogo_b986a2811fc39688ddff61b81231f276.gif width=95 border=0 height=95 /></a></div>
+</body>
+</html>

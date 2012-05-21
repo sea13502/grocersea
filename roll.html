@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>JS+CSS随屏幕滚动的带缓冲效果的右下角DIV浮动层丨芯晴网页特效丨CsrCode.Cn</title>
+<style>
+ html,body{
+  height:2000px;
+ }
+</style>
+</head>
+<body>
+ <div id="aa" style="width:200px;height:200px;background:#c0c0c0;" >拖动滚动条试试哦~</div>
+<br><br><hr><p align="center"><font color=black>本特效由 <a href="http://www.CsrCode.cn" target="_blank">芯晴网页特效</a>丨CsrCode.Cn 收集于互联网，只为兴趣与学习交流，不作商业用途。</font></p>
+</body>
+</html>
+<script>
+    function scroll(p){
+     var d = document,w = window,o = d.getElementById(p.id),ie6 = /msie 6/i.test(navigator.userAgent);
+     if(o){
+      o.style.cssText +=";position:"+(p.f&&!ie6?'fixed':'absolute')+";"+(p.r?'left':"right")+":0;"+(p.t!=undefined?'top:'+p.t+'px':'bottom:0');
+	  //o.style.cssText +=";position:"+(p.f&&!ie6?'fixed':'absolute')+";"+(p.r?'left':"right")+":0;"+'bottom:200px';
+      if(!p.f||ie6){
+       -function(){
+           var t = 500,st = d.documentElement.scrollTop||d.body.scrollTop,c;
+                 c = st  - o.offsetTop + (p.t!=undefined?p.t:(w.innerHeight||d.documentElement.clientHeight)-o.offsetHeight-100);//如果你是html 4.01请改成d.body,这里不处理以减少代码
+              c!=0&&(o.style.top = o.offsetTop + Math.ceil(Math.abs(c)/10)*(c<0?-1:1) + 'px',t=10);
+              setTimeout(arguments.callee,t)
+          }() 
+      }
+     }  
+    }
+    scroll({
+     id:'aa'
+    
+    })
+</script>
